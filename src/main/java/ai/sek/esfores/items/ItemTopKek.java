@@ -1,9 +1,12 @@
 package ai.sek.esfores.items;
 
 import org.bukkit.NamespacedKey;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.enchantments.EnchantmentWrapper;
 import org.bukkit.event.EventHandler;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.Bukkit;
@@ -24,6 +27,8 @@ public class ItemTopKek extends CustomItem {
         ItemMeta meta = this.baseItem.getItemMeta();
         assert meta != null;
         meta.setDisplayName(ChatColor.AQUA + "Top Kek");
+        meta.addEnchant(Enchantment.LUCK, 0, true);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         List<String> lore = new ArrayList<String>();
         lore.add(ChatColor.GOLD + "Tip Top Kek, straight from the Himalayas");
         meta.setLore(lore);
