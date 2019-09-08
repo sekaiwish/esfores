@@ -18,10 +18,6 @@ public abstract class CustomItem implements Listener {
 
     public abstract void initialize();
 
-    public ItemStack getItem() {
-        return this.baseItem;
-    }
-
     public boolean isItem(final ItemStack stack) {
         if (stack == null) {
             return false;
