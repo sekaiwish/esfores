@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="esfores">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/esfores_jar/esfores.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
