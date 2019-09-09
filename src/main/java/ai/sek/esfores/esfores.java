@@ -4,6 +4,7 @@ import ai.sek.esfores.items.ItemFeedingTube;
 import ai.sek.esfores.items.ItemKek;
 import ai.sek.esfores.items.ItemMemeArrow;
 import ai.sek.esfores.items.ItemMountingStick;
+import ai.sek.esfores.items.ItemPoisonApple;
 import ai.sek.esfores.items.ItemTopKek;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
@@ -15,13 +16,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public final class esfores extends JavaPlugin implements Listener {
     private File configFile;
     private FileConfiguration config;
-    private int messageId;
+    List<String> fortunes = new ArrayList<String>();
 
     public void onEnable() {
         configFile = new File(getDataFolder(), "config.yml");
@@ -32,12 +36,12 @@ public final class esfores extends JavaPlugin implements Listener {
         }
         config = new YamlConfiguration();
         loadConfig();
-        messageId = config.getInt("message-id");
         this.getServer().getPluginManager().registerEvents(this, this);
         new ItemFeedingTube(this).initialize();
         new ItemKek(this).initialize();
         new ItemMemeArrow(this).initialize();
         new ItemMountingStick(this).initialize();
+        new ItemPoisonApple(this).initialize();
         new ItemTopKek(this).initialize();
     }
 
@@ -91,6 +95,6 @@ public final class esfores extends JavaPlugin implements Listener {
         if (e.getMessage().startsWith(">")) {
             e.setMessage(ChatColor.GREEN + e.getMessage());
         }
-        e.setMessage("No. " + config.getString("message-id") + ": " + e.getMessage());
+        e.setFormat(ChatColor.DARK_GREEN + "%s" + ChatColor.RESET + " No. " + config.getString("message-id") + ": %s");
     }
 }
